@@ -37,7 +37,13 @@ void AAuraCharacter::OnRep_PlayerState()
 void AAuraCharacter::InitAbilityActorInfo()
 {
 	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
-	check(AuraPlayerState);
+	if (!AuraPlayerState) // Check if AuraPlayerState is valid
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AuraPlayerState is null in InitAbilityActorInfo."));
+		return;
+	}
+
+	// Initialize Ability System if AuraPlayerState is valid
 	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
 	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 	AttributeSet = AuraPlayerState->GetAttributeSet();
