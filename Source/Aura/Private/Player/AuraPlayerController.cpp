@@ -25,6 +25,7 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 void AAuraPlayerController::CursorTrace()
 {
 
+
 	FHitResult CursorHit;
 	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
 	if(!CursorHit.bBlockingHit) return;
@@ -125,6 +126,11 @@ void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 	{
 		ControlledPawn->AddMovementInput(ForwardDirection, InputAxisVector.Y);
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
-	};
+	} 
+
+
+	
+	
+	
 };
 
